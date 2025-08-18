@@ -41,7 +41,7 @@ class sample(Base):
     category = relationship("Category", back_populates="tips")
     post_history = relationship("Post_History", back_populates="tip")
 
-def get_dba():
+def get_db():
     db = SessionLocal()
     try:
         yield db
