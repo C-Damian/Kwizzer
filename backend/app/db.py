@@ -13,34 +13,6 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-class sample(Base):
-    __tablename__ = "sample"
-
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(50), unique=True, nullable=False)
-    description = Column(Text)
-    created_at = Column(TIMESTAMP)
-
-    # Relationship
-    tips = relationship("Tip", back_populates="category")
-
-class sample(Base):
-    __tablename__ = "sample"
-
-    id = Column(Integer, primary_key=True, index=True)
-    category_id = Column(Integer, ForeignKey("categories.id"))
-    title = Column(String(200), nullable=False)
-    content = Column(Text, nullable=False)
-    code_example = Column(Text)
-    hashtags = Column(String(200))
-    is_ai_generated = Column(Boolean, default=False)
-    created_at = Column(TIMESTAMP)
-    last_posted = Column(TIMESTAMP)
-
-    # Relationship
-    category = relationship("Category", back_populates="tips")
-    post_history = relationship("Post_History", back_populates="tip")
-
 def get_db():
     db = SessionLocal()
     try:
