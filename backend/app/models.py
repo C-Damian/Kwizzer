@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Text, Boolean, ForeignKey, TIMESTAMP
 from sqlalchemy.orm import relationship
-from app.db import Base
+from db import Base
 
 class Game(Base):
     __tablename__ = "games"
@@ -60,6 +60,7 @@ class QuestionOption(Base):
     question_id = Column(Integer, ForeignKey("questions.id"))
     option_text = Column(String(200))
     option_order = Column(Integer)
+    is_correct = Column(Boolean, default=False)
     question = relationship("Question", back_populates="options")
 
 class Answer(Base):

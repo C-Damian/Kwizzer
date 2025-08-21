@@ -4,19 +4,14 @@ Game response (GameResponse)
 Player join (PlayerJoinRequest, PlayerResponse)
 Answer submission (AnswerRequest, AnswerResponse)
 Question/Option models as needed'''
+
+from typing import Optional
 from pydantic import BaseModel
 
 class GameCreateRequest(BaseModel):
   prompt: str
-  host_id: str
+  host_id: Optional[int] = None  # Optional host ID, defaults to None
 
-class GameResponse(BaseModel):
-  game_id: str
-  join_code: str
-  status: str
-  message: str
-  questions: list[Question] = []
-  
 class PlayerJoinRequest(BaseModel):
     game_id: str
     display_name: str
@@ -40,7 +35,7 @@ class AnswerResponse(BaseModel):
 class QuestionOption(BaseModel):
     option_id: str
     option_text: str
-    is_correct: bool
+    option_order: int
   
 class Question(BaseModel):
     question_id: str
@@ -52,3 +47,10 @@ class Question(BaseModel):
     time_limit: int
     is_active: bool
     options: list[QuestionOption] = []
+
+class GameResponse(BaseModel):
+  game_id: str
+  join_code: str
+  status: str
+  message: str
+  questions: list[Question] = []

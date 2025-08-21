@@ -1,29 +1,55 @@
-#Kwizzer
-Kwizzer is a personal project where I'm building an interactive quiz platform to explore and practice full-stack development. My goal is to create a flexible foundation for custom quiz experiences, with features like question banks, user authentication, scoring, and analytics. 🚀
+# Kwizzer 🎯
 
-## Why Kwizzer?
+A Kahoot-like interactive quiz platform built as a personal project to explore full-stack development with modern technologies. Think Kahoot, but simplified and customizable for studying from any content - whether it's a prompt or uploaded PDF files.
 
-I'm using Kwizzer to sharpen my skills in designing scalable systems, creating and implementing complex APIs, and crafting user-friendly interfaces. It’s a playground for experimenting with new technologies and architectural patterns, while also having fun building something useful.
+## 🚀 The Vision
 
-## Project Goals
+Create a real-time quiz experience where:
+- **Hosts** can generate quizzes from prompts or uploaded documents using AI
+- **Players** join anonymously with just a game code and display name
+- **Everyone** participates in live, timed questions with instant feedback
 
-- **User-Friendly Interface:** Clean and intuitive UI for quiz creators and participants.
-- **Customizable Quizzes:** Multiple question types, timed quizzes, and flexible scoring.
-- **Scalability:** Modular architecture for easy feature expansion.
-- **Analytics:** Track user performance and quiz stats.
+## 🛠️ Tech Stack
 
-## Current Features
+- **Frontend:** React (Vite) - Clean, responsive UI
+- **Backend:** FastAPI - High-performance Python API
+- **Database:** PostgreSQL - Reliable data persistence
+- **AI Integration:** Google Gemini API - Dynamic question generation
+- **Real-time:** WebSockets - Live game synchronization
 
-- Core quiz engine for managing questions and scoring.
-- Basic user authentication and session handling.
-- RESTful API endpoints for quiz creation and participation.
-- Initial frontend components for quiz interaction.
+## 📍 Current State (In Development)
 
-## What’s Next?
+### ✅ Completed
+- **Database Schema:** Complete data models for games, users, questions, players, and answers
+- **Database Migrations:** Alembic setup for version control
+- **Core API Structure:** FastAPI foundation with health checks
+- **Game Creation Endpoint:** Basic `/game/create` with database integration
+- **Anonymous User Support:** Hosts can create games without registration
 
-- More question types (multiple choice, true/false, fill-in-the-blank).
-- Real-time multiplayer quiz support. 🧑‍🤝‍🧑
-- Advanced analytics and reporting.
-- Friendly UI/UX for desktop and mobile.
+### 🚧 In Progress
+- Question generation integration (AI stub ready)
+- Player join and answer submission endpoints
+- Real-time WebSocket implementation
 
-I’m always open to feedback and ideas—feel free to reach out or contribute!
+### 🎯 Next Steps
+- AI integration with Google Gemini API
+- Frontend React components
+- Live game session management
+- File upload processing
+
+## 🏗️ Project Structure
+
+```
+Kwizzer/
+├── backend/          # FastAPI application
+│   ├── app/
+│   │   ├── main.py   # API endpoints
+│   │   ├── models.py # SQLAlchemy database models
+│   │   ├── schemas.py# Pydantic request/response models
+│   │   └── db.py     # Database connection
+│   └── alembic/      # Database migrations
+└── frontend/         # React (Vite) application
+    └── src/          # React components
+```
+
+This is my playground for learning modern web development patterns, database design, real-time systems, and AI integration. Every feature is built with scalability and clean architecture in mind! 🎓
