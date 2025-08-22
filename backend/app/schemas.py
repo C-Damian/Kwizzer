@@ -33,12 +33,14 @@ class AnswerResponse(BaseModel):
     correct_answer: str
 
 class QuestionOption(BaseModel):
-    option_id: str
+    id: str
+    question_id: str
     option_text: str
     option_order: int
-  
+    is_correct: bool
+
 class Question(BaseModel):
-    question_id: str
+    id: str
     question_text: str
     question_type: str
     source_type: str

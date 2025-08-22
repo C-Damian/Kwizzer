@@ -128,9 +128,11 @@ def create_game(game: GameCreateRequest, db: Session = Depends(get_db)):
                 option = QuestionOptionModel(
                     question_id=question.id,
                     option_text=opt_data["option_text"],
-                    option_order=opt_data["option_order"]
+                    option_order=opt_data["option_order"],
+                    is_correct=opt_data["is_correct"]
                 )
                 db.add(option)
+                db.flush()  # Get the option ID
                 options.append(option)
             
             # Add to response data
@@ -138,9 +140,18 @@ def create_game(game: GameCreateRequest, db: Session = Depends(get_db)):
                 "id": str(question.id),
                 "question_text": question.question_text,
                 "question_type": question.question_type,
+                "source_type": question.source_type,
                 "points_value": question.points_value,
+                "explanation": question.explanation,
                 "time_limit": question.time_limit,
-                "options": [{"id": str(opt.id), "text": opt.option_text, "order": opt.option_order} for opt in options]
+                "is_active": question.is_active,
+                "options": [{
+                    "id": str(opt.id),
+                    "question_id": str(opt.question_id),
+                    "option_text": opt.option_text,
+                    "option_order": opt.option_order,
+                    "is_correct": opt.is_correct
+                } for opt in options]
             })
         
         # Step 6: Commit all changes
